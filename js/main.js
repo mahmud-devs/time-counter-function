@@ -5,13 +5,27 @@
 const hourInput = document.querySelector(".hourInput");
 const startBtn = document.querySelector(".start");
 const endBtn = document.querySelector(".end");
-const reset = document.querySelector(".reset");
 const time = document.querySelector(".time");
 
 /*
 ================ hours all properties selectors      =================
 */
+/*
+================ minute all properties selectors      =================
+*/
+const minuteInput = document.querySelector(".minuteInput");
+const start2 = document.querySelector(".start2");
+const end2 = document.querySelector(".end2");
+const minuteTime = document.querySelector(".minutetime");
 
+
+
+
+
+/*
+================ minute all properties selectors      =================
+*/
+//============= hour function
 let hours;
 let stopinterval;
 
@@ -23,7 +37,7 @@ hourInput.addEventListener("change", function (e) {
     }
 });
 startBtn.addEventListener("click", function () {
-    if (hours) {
+    if (hours<=24) {
         start();
     }
 });
@@ -31,11 +45,7 @@ endBtn.addEventListener("click", function () {
     stop();
 });
 
-reset.addEventListener("click", function () {
-    hourInput.value = 0;
-    stop();
-    time.innerHTML = "00";
-});
+
 function counDown() {
     --hours;
     time.innerHTML = hours;
@@ -49,5 +59,38 @@ function start() {
     }, 1000);
 }
 function stop() {
+    clearInterval(stopinterval);
+}
+//============= minute function
+minuteInput.addEventListener("change", function (e) {
+    if (isNaN(e.target.value)) {
+        return;
+    } else {
+        hours = e.target.value;
+    }
+});
+start2.addEventListener("click", function () {
+    if (hours<=2400) {
+        startTwo();
+    }
+});
+end2.addEventListener("click", function () {
+    stopTwo();
+});
+
+
+function counDown() {
+    --hours;
+    minuteTime.innerHTML = hours;
+    if (hours == 0) {
+        clearInterval(stopinterval);
+    }
+}
+function startTwo() {
+    stopinterval = setInterval(() => {
+        counDown();
+    }, 100);
+}
+function stopTwo() {
     clearInterval(stopinterval);
 }

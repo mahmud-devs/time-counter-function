@@ -8,27 +8,35 @@
 
 .body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
     background: linear-gradient(to left, hsl(101, 99%, 61%), rgb(194, 48, 227));
-    row-gap: 20px;
+    column-gap: 20px;
     font-family: "Open Sans", sans-serif;
 }
 
-.hour {
+.main--div {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
     align-items: center;
 }
-.hourInput {
+.hourInput,
+.minuteInput,
+.secondInput {
     padding: 10px 20px;
 }
-.hourInput:focus {
+.hourInput,
+.minuteInput,
+.secondInput:focus {
     outline: none;
+}
+h3 {
+    font-size: 40px;
+    color: white;
+    text-transform: capitalize;
 }
 .btn {
     display: flex;
@@ -36,7 +44,8 @@
     width: 100%;
 }
 .start,
-.end,.reset {
+.end,
+.btno {
     font-size: 20px;
     font-weight: 700;
     color: white;
@@ -51,7 +60,9 @@
     -o-border-radius: 5px;
     cursor: pointer;
 }
-.time{
+.time,
+.secondtime,
+.minutetime {
     font-size: 30px;
     font-weight: 700;
     color: white;
