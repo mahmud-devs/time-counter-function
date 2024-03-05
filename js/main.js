@@ -18,14 +18,10 @@ const start2 = document.querySelector(".start2");
 const end2 = document.querySelector(".end2");
 const minuteTime = document.querySelector(".minutetime");
 
-
-
-
-
 /*
 ================ minute all properties selectors      =================
 */
-//============= hour function
+// ============= hour function
 let hours;
 let stopinterval;
 
@@ -37,14 +33,13 @@ hourInput.addEventListener("change", function (e) {
     }
 });
 startBtn.addEventListener("click", function () {
-    if (hours<=24) {
+    if (hours <= 24) {
         start();
     }
 });
 endBtn.addEventListener("click", function () {
     stop();
 });
-
 
 function counDown() {
     --hours;
@@ -61,16 +56,19 @@ function start() {
 function stop() {
     clearInterval(stopinterval);
 }
-//============= minute function
+// ============= minute function
+let minute;
+let stopintervalTwo;
+
 minuteInput.addEventListener("change", function (e) {
     if (isNaN(e.target.value)) {
         return;
     } else {
-        hours = e.target.value;
+        minute = e.target.value;
     }
 });
 start2.addEventListener("click", function () {
-    if (hours<=2400) {
+    if (minute <= 60) {
         startTwo();
     }
 });
@@ -78,19 +76,18 @@ end2.addEventListener("click", function () {
     stopTwo();
 });
 
-
-function counDown() {
-    --hours;
-    minuteTime.innerHTML = hours;
-    if (hours == 0) {
-        clearInterval(stopinterval);
+function counDownTwo() {
+    --minute;
+    minuteTime.innerHTML = minute;
+    if (minute == 0) {
+        clearInterval(stopintervalTwo);
     }
 }
 function startTwo() {
-    stopinterval = setInterval(() => {
-        counDown();
-    }, 100);
+    stopintervalTwo = setInterval(() => {
+        counDownTwo();
+    }, 600);
 }
 function stopTwo() {
-    clearInterval(stopinterval);
+    clearInterval(stopintervalTwo);
 }
