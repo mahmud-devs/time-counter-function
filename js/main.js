@@ -67,3 +67,27 @@ minuteInput.addEventListener("change", function (e) {
         minute = e.target.value;
     }
 });
+start2.addEventListener("click", function () {
+    if (minute <= 60) {
+        startTwo();
+    }
+});
+end2.addEventListener("click", function () {
+    stopTwo();
+});
+
+function counDownTwo() {
+    --minute;
+    minuteTime.innerHTML = minute;
+    if (minute == 0) {
+        clearInterval(stopintervalTwo);
+    }
+}
+function startTwo() {
+    stopintervalTwo = setInterval(() => {
+        counDownTwo();
+    }, 600);
+}
+function stopTwo() {
+    clearInterval(stopintervalTwo);
+}
